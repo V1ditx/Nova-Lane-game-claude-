@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Nova Lane, a neon space shooter that runs in your browser.">
+<meta name="theme-color" content="#06060d">
+<title>Nova Lane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;0,600;0,700;1,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <div id="wrap">
+    <div id="stage">
+      <canvas id="c" width="480" height="720" aria-label="Nova Lane playfield"></canvas>
+
+      <div id="ov">
+        <section id="pStart" class="panel">
+          <div class="eyebrow">Sector 7 &middot; Night patrol</div>
+          <h1 class="logo"><span class="a">Nova</span><span class="b">Lane</span></h1>
+          <p class="tag">One ship. Endless waves. Hold the lane.</p>
+          <p class="best">Best <b id="sBest">0000000</b></p>
+          <button class="btn" id="btnStart" type="button">Launch</button>
+          <div class="keys kbd-only">
+            <span class="k"><kbd>WASD</kbd><kbd>Arrows</kbd><kbd>Mouse</kbd></span><span>Fly. Guns fire on their own.</span>
+            <span class="k"><kbd>Space</kbd></span><span>Bomb</span>
+            <span class="k"><kbd>P</kbd></span><span>Pause</span>
+            <span class="k"><kbd>M</kbd></span><span>Sound on / off</span>
+          </div>
+          <p class="touch-only">Drag to fly. The ship rides above your finger so you can see it. Tap the BOMB button to clear the screen.</p>
+          <div class="legend">
+            <span style="color:#34f0ff"><i>W</i>Power</span>
+            <span style="color:#8a5cff"><i>S</i>Shield</span>
+            <span style="color:#ffb62e"><i>B</i>Bomb</span>
+            <span style="color:#4dffb0"><i>H</i>Hull</span>
+          </div>
+        </section>
+
+        <section id="pPause" class="panel" hidden>
+          <div class="eyebrow">Holding position</div>
+          <h2 class="pz">Paused</h2>
+          <button class="btn" id="btnResume" type="button">Resume</button>
+          <p class="sub">P or Esc also resumes.</p>
+        </section>
+
+        <section id="pOver" class="panel" hidden>
+          <div class="eyebrow warn">Hull breach</div>
+          <div class="big" id="oScore">0</div>
+          <p class="newbest" id="oNew" hidden>New best</p>
+          <dl class="stats">
+            <div><dt>Wave</dt><dd id="oWave">1</dd></div>
+            <div><dt>Kills</dt><dd id="oKills">0</dd></div>
+            <div><dt>Peak chain</dt><dd id="oMult">x1</dd></div>
+            <div><dt>Best</dt><dd id="oBest">0</dd></div>
+          </dl>
+          <button class="btn" id="btnAgain" type="button">Fly again</button>
+        </section>
+      </div>
+
+      <div id="ctl" hidden>
+        <button class="mini" id="muteBtn" type="button" aria-pressed="false">SND ON</button>
+        <button class="mini" id="pauseBtn" type="button" aria-label="Pause">PAUSE</button>
+      </div>
+      <button id="bombBtn" type="button" hidden aria-label="Bomb"><span>BOMB</span><b id="bombCount">2</b></button>
+    </div>
+  </div>
+  <p id="hint">Chain kills within 2 seconds to raise your multiplier. Every fifth wave brings the Warden.</p>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
